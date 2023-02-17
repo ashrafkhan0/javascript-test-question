@@ -8,7 +8,123 @@
   </head>
   <body>
     <script>
-      console.log("hello");
+      //Q.1 =>
+      /*
+      let f1 = function (fn1, fn2, a, b, c) {
+        fn1();
+        fn2(a, b);
+        return function () {
+          console.log("hello");
+        };
+      };
+      let ans = f1(
+        function () {
+          console.log("function Fn1");
+        },
+        function (a, b) {
+          a + b;
+        },
+        10,
+        20,
+        30
+      );
+      ans();
+      */
+      ///////////////////////////////////////////////////////////////
+      //Q.2=>
+      /*
+      const fun2 = function (fn1, fn2, a, b, c) {
+        fn1(a, b, c);
+        fn2(a, b);
+        return function (x, y, z) {
+          console.log(x + y + z);
+        };
+      };
+      let ans = fun2(
+        function (x, y, z) {
+          console.log(x + y + z);
+        },
+        function (x, y) {
+          console.log(x + y);
+        },
+        10,
+        20,
+        30
+      );
+      ans(20, 30, 40);
+      */
+      ////////////////////////////////////////////////////////////////
+      /*
+      function fun3(fn1, fn2, a, b) {
+        fn1(a, b, fn2);
+        return function (x, y, z) {
+          console.log(x * y * z);
+        };
+      }
+      let ans = fun3(
+        (x, y, z) => {
+          console.log(x + y), z();
+        },
+        () => console.log("hello🤣"),
+        35,
+        35
+      );
+      ans(30, 50, 60);
+      */
+      ////////////////////////////////////////////////////////////////////
+      /*
+      function fun4(fn1, fn2, fn3, a) {
+        fn1(a, fn3, fn2);
+        return function (x, y, z) {
+          return x + y + z;
+        };
+      }
+
+      let ans = fun4(
+        function (x, y, z) {
+          console.log(20);
+          y();
+          z();
+        },
+        function () {
+          console.log("hello🤣");
+        },
+        function () {
+          console.log("world"), 10;
+        }
+      );
+
+      console.log(ans(20, 30, 50));
+      */
+      ///////////////////////////////////////////////////////////////////////
+      //Q.5=>
+      function fun5(fn1, fn2, fn3, fn4, a) {
+        fn1(a, fn3, fn2);
+        fn2(fn3, fn4);
+        fn3();
+        fn4();
+        return fn4;
+      }
+      fun5(
+        (a, b, c) => {
+          console.log(a);
+          b();
+          c();
+        },
+        (x, y) => {
+          if (x && y) {
+            x();
+            y();
+          }
+        },
+        () => {
+          console.log("hello");
+        },
+        () => {
+          console.log("Sorry");
+        },
+        20
+      );
     </script>
   </body>
 </html>
